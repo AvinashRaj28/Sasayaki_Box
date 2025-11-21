@@ -155,7 +155,7 @@ const DashboardPage = () => {
       {/* ✅ Navbar now added */}
       <Navbar />
 
-      <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-white rounded w-full max-w-6xl">
+      <div className="my-8 w-full mx-auto px-4 p-6 bg-white rounded max-w-full sm:max-w-xl md:max-w-3xl lg:max-w-5xl">
         <Toaster />
         <h1 className="text-4xl font-bold mb-4">
           {language === "en" ? "User Dashboard" : "ユーザーダッシュボード"}
@@ -261,6 +261,7 @@ const DashboardPage = () => {
           )}
         </div>
       </div>
+      
     </>
   );
 };

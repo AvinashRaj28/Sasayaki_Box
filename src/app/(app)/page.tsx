@@ -96,14 +96,6 @@ export default function Home() {
 
         <LanguageAwareCarousel />
       </main>
-
-      <footer className="text-center p-4 md:p-6 bg-pink-200 rounded-lg shadow-inner">
-        © {new Date().getFullYear()}{" "}
-        <span className="font-semibold text-pink-700">
-          {language === "en" ? "SasayakiBox" : "ささやきボックス"}
-        </span>
-        . All rights reserved.
-      </footer>
     </>
   );
 }
