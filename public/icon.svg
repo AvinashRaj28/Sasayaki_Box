@@ -1,0 +1,44 @@
+<svg
+  width="512"
+  height="512"
+  viewBox="0 0 512 512"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M256 96C167 96 96 158 96 236c0 40 19 76 51 101-3 24-11 47-22 67 33-7 63-22 88-42 14 3 29 5 43 5 89 0 160-62 160-140S345 96 256 96z"
+    stroke="#EA6E8C"
+    stroke-width="28"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <g transform="translate(156,156)">
+    <path
+      d="M100 0c20 30 20 60 0 90h-1c-20-30-20-60 0-90z"
+      fill="#F28CB7"
+    />
+    <path
+      d="M160 40c-10 34-33 54-67 58v-1c10-34 33-54 67-57z"
+      fill="#F28CB7"
+    />
+    <path
+      d="M160 120c-34-3-57-23-67-57v-1c34 4 57 24 67 58z"
+      fill="#F28CB7"
+    />
+    <path
+      d="M100 180c-20-30-20-60 0-90h1c20 30 20 60 0 90z"
+      fill="#F28CB7"
+    />
+    <path
+      d="M40 120c10-34 33-54 67-57v1c-10 34-33 54-67 56z"
+      fill="#F28CB7"
+    />
+    <circle cx="100" cy="100" r="12" fill="#C85A85" />
+    <circle cx="140" cy="100" r="10" fill="#C85A85" />
+    <circle cx="120" cy="65" r="10" fill="#C85A85" />
+    <circle cx="80" cy="65" r="10" fill="#C85A85" />
+    <circle cx="60" cy="100" r="10" fill="#C85A85" />
+    <circle cx="80" cy="135" r="10" fill="#C85A85" />
+    <circle cx="120" cy="135" r="10" fill="#C85A85" />
+  </g>
+</svg>

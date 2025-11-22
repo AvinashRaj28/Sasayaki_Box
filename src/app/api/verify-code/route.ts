@@ -6,15 +6,20 @@ export async function POST(request: Request) {
 
     try {
         const { username, code } = await request.json();
-        const decodedUsername = decodeURIComponent(username);
 
-        const user = await UserModel.findOne({ username: decodedUsername });
+        // ⭐ Normalize the username (same as sign-up + public page)
+        const normalizedUsername = decodeURIComponent(username)
+            .trim()
+            .toLowerCase();
+
+        // ⭐ Always search using lowercase
+        const user = await UserModel.findOne({ username: normalizedUsername });
 
         if (!user) {
-            return Response.json({
-                success: false,
-                message: "User not found."
-            }, { status: 400 });
+            return Response.json(
+                { success: false, message: "User not found." },
+                { status: 400 }
+            );
         }
 
         const isCodeValid = user.verifyCode === code;
@@ -24,27 +29,30 @@ export async function POST(request: Request) {
             user.isVerified = true;
             await user.save();
 
-            return Response.json({
-                success: true,
-                message: "Account verified successfully."
-            }, { status: 200 });
+            return Response.json(
+                { success: true, message: "Account verified successfully." },
+                { status: 200 }
+            );
         } else if (!isCodeNotExpired) {
-            return Response.json({
-                success: false,
-                message: "Verification code has expired. Please sign up again to get a new code."
-            }, { status: 400 });
+            return Response.json(
+                {
+                    success: false,
+                    message: "Verification code has expired. Please sign up again to get a new code."
+                },
+                { status: 400 }
+            );
         } else {
-            return Response.json({
-                success: false,
-                message: "Invalid verification code."
-            }, { status: 400 });
+            return Response.json(
+                { success: false, message: "Invalid verification code." },
+                { status: 400 }
+            );
         }
 
     } catch (error) {
         console.error("Error verifying code:", error);
-        return Response.json({
-            success: false,
-            message: "Error verifying code."
-        }, { status: 500 });
+        return Response.json(
+            { success: false, message: "Error verifying code." },
+            { status: 500 }
+        );
     }
 }

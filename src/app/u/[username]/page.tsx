@@ -11,6 +11,7 @@ import Background from "@/components/Background"; // Your sakura JSON background
 
 const PublicUserPage = () => {
   const { username } = useParams();
+  const safeUsername = String(username).trim().toLowerCase();
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const { language } = useLanguage();
@@ -30,7 +31,7 @@ const PublicUserPage = () => {
       const res = await fetch("/api/send-message", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, content: message }),
+        body: JSON.stringify({ username: safeUsername, content: message }),
       });
 
       const data = await res.json();
@@ -51,9 +52,7 @@ const PublicUserPage = () => {
       }
     } catch (err) {
       toast.error(
-        language === "en"
-          ? "Something went wrong."
-          : "エラーが発生しました。"
+        language === "en" ? "Something went wrong." : "エラーが発生しました。"
       );
     } finally {
       setLoading(false);
@@ -61,13 +60,12 @@ const PublicUserPage = () => {
   };
 
   return (
+
     <div className="relative min-h-screen flex flex-col items-center justify-center p-6 overflow-hidden">
       {/* Background animation */}
       <Background />
-
       {/* Toast notifications */}
       <Toaster richColors position="top-center" />
-
       <Card className="w-full max-w-md shadow-2xl rounded-xl border border-pink-200 bg-white/80 backdrop-blur-md">
         <CardContent className="p-6 space-y-6">
           <h1 className="text-2xl md:text-3xl font-bold text-center text-pink-700">
@@ -99,12 +97,11 @@ const PublicUserPage = () => {
                 ? "Sending..."
                 : "送信中..."
               : language === "en"
-              ? "Send Message"
-              : "メッセージを送る"}
+                ? "Send Message"
+                : "メッセージを送る"}
           </Button>
         </CardContent>
       </Card>
-
       <p className="mt-6 text-sm text-gray-600 text-center italic">
         {language === "en"
           ? "Your identity is hidden. Be kind 💖"
