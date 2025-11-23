@@ -66,7 +66,7 @@ const Navbar: React.FC<NavbarProps> = ({ hideLanguageToggle }) => {
         )}
 
         {/* Dashboard Button */}
-        {session && !pathname.startsWith("/dashboard") && (
+        {session && !pathname.startsWith("/dashboard") && !pathname.startsWith("/u/") && (
           <Link href="/dashboard">
             <Button variant="outline" size="sm" className="mr-2">
               {language === "en" ? "Dashboard" : "ダッシュボード"}
