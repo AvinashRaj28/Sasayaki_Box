@@ -7,7 +7,7 @@ const NavbarWrapper = () => {
   const pathname = usePathname();
 
   // hide navbar on certain paths (like dashboard, sign-in)
-  const hideNavbar = pathname.startsWith("/dashboard") || pathname.startsWith("/sign-in") || pathname.startsWith("/sign-up");
+  const hideNavbar = pathname.startsWith("/dashboard") || pathname.startsWith("/sign-in") || pathname.startsWith("/sign-up") || pathname.startsWith("/verify");
   
 
   if (hideNavbar) return null;
